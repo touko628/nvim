@@ -1,17 +1,3 @@
-" __  ____   __  _   ___     _____ __  __ ____   ____
-"|  \/  \ \ / / | \ | \ \   / /_ _|  \/  |  _ \ / ___|
-"| |\/| |\ V /  |  \| |\ \ / / | || |\/| | |_) | |
-"| |  | | | |   | |\  | \ V /  | || |  | |  _ <| |___
-"|_|  |_| |_|   |_| \_|  \_/  |___|_|  |_|_| \_\\____|
-
-" Author: @theniceboy
-
-" Checkout-list
-" vim-esearch
-" fmoralesc/worldslice
-" SidOfc/mkdx
-
-
 " ===
 " === Auto load for first time uses
 " ===
@@ -30,7 +16,7 @@ if empty(glob('~/.config/nvim/_machine_specific.vim'))
 	let has_machine_specific_file = 0
 	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
 endif
-source $XDG_CONFIG_HOME/nvim/_machine_specific.vim
+source ~/.config//nvim/_machine_specific.vim
 
 
 " ====================
@@ -138,11 +124,10 @@ noremap S :w<CR>
 noremap <LEADER>rc :e ~/.config/nvim/init.vim<CR>
 
 " Undo operations
-noremap l u
 
 " Insert Key
-noremap k i
-noremap K I
+noremap h i
+noremap H I
 
 " make Y to copy till the end of the line
 nnoremap Y y$
@@ -168,7 +153,7 @@ vnoremap <LEADER>tt :s/    /\t/g
 noremap <silent> <LEADER>o za
 
 " Open up lazygit
-noremap \g :Git 
+noremap \g :Git
 noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 " nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
 
@@ -182,36 +167,37 @@ noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
 " < n   i >
 "     e
 "     v
-noremap <silent> u k
-noremap <silent> n h
-noremap <silent> e j
-noremap <silent> i l
-noremap <silent> gu gk
-noremap <silent> ge gj
-noremap <silent> \v v$h
+"noremap <silent> u k
+"noremap <silent> n h
+"noremap <silent> e j
+"noremap <silent> i l
+noremap <silent> i k
+noremap <silent> j h
+noremap <silent> k j
+noremap <silent> gi gk
+noremap <silent> gk gj
 
 " U/E keys for 5 times u/e (faster navigation)
-noremap <silent> U 5k
-noremap <silent> E 5j
+noremap <silent> I 5k
+noremap <silent> K 5j
 
 " N key: go to the start of the line
-noremap <silent> N 0
+noremap <silent> J 0
 " I key: go to the end of the line
-noremap <silent> I $
+noremap <silent> L $
 
 " Faster in-line navigation
 noremap W 5w
 noremap B 5b
 
 " set h (same as n, cursor left) to 'end of word'
-noremap h e
 
 " Ctrl + U or E will move up/down the view port without moving the cursor
-noremap <C-U> 5<C-y>
+noremap <C-Y> 5<C-y>
 noremap <C-E> 5<C-e>
 
 
-source $XDG_CONFIG_HOME/nvim/cursor.vim
+source ~/.config//nvim/cursor.vim
 
 " ===
 " === Insert Mode Cursor Movement
@@ -244,19 +230,17 @@ noremap = n
 " ===
 " Use <space> + new arrow keys for moving the cursor around windows
 noremap <LEADER>w <C-w>w
-noremap <LEADER>u <C-w>k
-noremap <LEADER>e <C-w>j
-noremap <LEADER>n <C-w>h
+noremap <LEADER>i <C-w>k
+noremap <LEADER>k <C-w>j
+noremap <LEADER>j <C-w>h
 noremap <LEADER>i <C-w>l
-
 " Disable the default s key
 noremap s <nop>
-
 " split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-noremap su :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-noremap se :set splitbelow<CR>:split<CR>
-noremap sn :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-noremap si :set splitright<CR>:vsplit<CR>
+noremap si :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+noremap sk :set splitbelow<CR>:split<CR>
+noremap sj :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+noremap sl :set splitright<CR>:vsplit<CR>
 
 " Resize splits with arrow keys
 noremap <up> :res +5<CR>
@@ -283,18 +267,18 @@ noremap <LEADER>q <C-w>j:q<CR>
 " Create a new tab with tu
 noremap tu :tabe<CR>
 " Move around tabs with tn and ti
-noremap tn :-tabnext<CR>
-noremap ti :+tabnext<CR>
+noremap tj :-tabnext<CR>
+noremap tl :+tabnext<CR>
 " Move the tabs with tmn and tmi
-noremap tmn :-tabmove<CR>
-noremap tmi :+tabmove<CR>
+noremap tmj :-tabmove<CR>
+noremap tml :+tabmove<CR>
 
 
 " ===
 " === Markdown Settings
 " ===
 " Snippets
-source $XDG_CONFIG_HOME/nvim/md-snippets.vim
+source ~/.config//nvim/md-snippets.vim
 " auto spell
 autocmd BufRead,BufNewFile *.md setlocal spell
 
@@ -309,7 +293,7 @@ nnoremap \t :tabe<CR>:-tabmove<CR>:term sh -c 'st'<CR><C-\><C-N>:q<CR>
 inoremap <C-u> <ESC>lx$p
 
 " Opening a terminal window
-noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>
+noremap <LEADER>/ :set splitbelow<CR>:split<CR>:res +5<CR>:term<CR>
 
 " Press space twice to jump to the next '<++>' and edit it
 noremap <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
@@ -326,7 +310,7 @@ noremap <C-c> zz
 autocmd BufEnter * silent! lcd %:p:h
 
 " Call figlet
-noremap tx :r !figlet 
+noremap tx :r !figlet
 
 " find and replace
 noremap \s :%s//g<left><left>
@@ -335,11 +319,9 @@ noremap \s :%s//g<left><left>
 noremap <LEADER>sw :set wrap<CR>
 
 " press f10 to show hlgroup
-function! SynGroup()
-	let l:s = synID(line('.'), col('.'), 1)
-	echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-endfun
-map <F10> :call SynGroup()<CR>
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Compile function
 noremap r :call CompileRunGcc()<CR>
@@ -371,7 +353,7 @@ func! CompileRunGcc()
 		silent! exec "VimtexStop"
 		silent! exec "VimtexCompile"
 	elseif &filetype == 'dart'
-		exec "CocCommand flutter.run -d ".g:flutter_default_device." ".g:flutter_run_args
+		exec "CocCommand flutter.run -d ".g:flutter_default_device
 		silent! exec "CocCommand flutter.dev.openDevLog"
 	elseif &filetype == 'javascript'
 		set splitbelow
@@ -391,18 +373,15 @@ endfunc
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'LoricAndre/fzterm.nvim'
 
 " Testing my own plugin
 " Plug 'theniceboy/vim-calc'
 
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/playground'
-
 " Pretty Dress
+Plug 'bling/vim-bufferline'
 Plug 'bpietravalle/vim-bolt'
-Plug 'theniceboy/nvim-deus'
+Plug 'theniceboy/vim-deus'
+
 "Plug 'arzg/vim-colors-xcode'
 
 " Status line
@@ -430,7 +409,6 @@ Plug 'liuchengxu/vista.vim'
 
 " Auto Complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'branch': 'release', 'tag': 'v0.0.78'}
 Plug 'wellle/tmux-complete.vim'
 
 " Snippets
@@ -448,8 +426,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'cohama/agit.vim'
 
 " Autoformat
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
+Plug 'Chiel92/vim-autoformat'
 
 " Tex
 " Plug 'lervag/vimtex'
@@ -470,11 +447,8 @@ Plug 'yuezk/vim-js', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', '
 " Plug 'MaxMEllon/vim-jsx-pretty', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 " Plug 'jelera/vim-javascript-syntax', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
 "Plug 'jaxbot/browserlink.vim'
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'posva/vim-vue'
-" Plug 'evanleck/vim-svelte', {'branch': 'main'}
-" Plug 'leafOfTree/vim-svelte-plugin'
-" Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'posva/vim-vue'
 
 " Go
 Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
@@ -549,9 +523,9 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'itchyny/calendar.vim'
 
 " Other visual enhancement
+Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
 Plug 'mg979/vim-xtabline'
-Plug 'ryanoasis/vim-devicons'
 Plug 'wincent/terminus'
 
 " Other useful utilities
@@ -622,7 +596,7 @@ let g:gitgutter_sign_removed_first_line = '▔'
 let g:gitgutter_sign_modified_removed = '▒'
 " autocmd BufWritePost * GitGutter
 nnoremap <LEADER>gf :GitGutterFold<CR>
-nnoremap H :GitGutterPreviewHunk<CR>
+nnoremap <LEADER>GP :GitGutterPreviewHunk<CR>
 nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 
@@ -631,35 +605,35 @@ nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 " === coc.nvim
 " ===
 let g:coc_global_extensions = [
-	\ 'coc-actions',
-	\ 'coc-css',
-	\ 'coc-diagnostic',
-	\ 'coc-explorer',
-	\ 'coc-flutter-tools',
-	\ 'coc-gitignore',
-	\ 'coc-html',
-	\ 'coc-json',
-	\ 'coc-lists',
-	\ 'coc-prettier',
-	\ 'coc-pyright',
-	\ 'coc-python',
-	\ 'coc-snippets',
-	\ 'coc-sourcekit',
-	\ 'coc-stylelint',
-	\ 'coc-syntax',
-	\ 'coc-tasks',
-	\ 'coc-todolist',
-	\ 'coc-translator',
-	\ 'coc-tslint-plugin',
-	\ 'coc-tsserver',
-	\ 'coc-vetur',
-	\ 'coc-vimlsp',
-	\ 'coc-yaml',
-	\ 'coc-yank']
+			\ 'coc-actions',
+			\ 'coc-css',
+			\ 'coc-diagnostic',
+			\ 'coc-explorer',
+			\ 'coc-flutter-tools',
+			\ 'coc-gitignore',
+			\ 'coc-html',
+			\ 'coc-json',
+			\ 'coc-lists',
+			\ 'coc-prettier',
+			\ 'coc-pyright',
+			\ 'coc-python',
+			\ 'coc-snippets',
+			\ 'coc-sourcekit',
+			\ 'coc-stylelint',
+			\ 'coc-syntax',
+			\ 'coc-tasks',
+			\ 'coc-todolist',
+			\ 'coc-translator',
+			\ 'coc-tslint-plugin',
+			\ 'coc-tsserver',
+			\ 'coc-vimlsp',
+			\ 'coc-vetur',
+			\ 'coc-yaml',
+			\ 'coc-yank']
 inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 function! s:check_back_space() abort
@@ -677,10 +651,6 @@ function! Show_documentation()
 	endif
 endfunction
 nnoremap <LEADER>h :call Show_documentation()<CR>
-" set runtimepath^=~/.config/nvim/coc-extensions/coc-flutter-tools/
-" let g:coc_node_args = ['--nolazy', '--inspect-brk=6045']
-" let $NVIM_COC_LOG_LEVEL = 'debug'
-" let $NVIM_COC_LOG_FILE = '/Users/david/Desktop/log.txt'
 
 nnoremap <silent><nowait> <LEADER>d :CocList diagnostics<cr>
 nmap <silent> <LEADER>- <Plug>(coc-diagnostic-prev)
@@ -707,7 +677,7 @@ nmap tt :CocCommand explorer<CR>
 nmap ts <Plug>(coc-translator-p)
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
+	execute 'CocCommand actions.open ' . a:type
 endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
@@ -731,13 +701,12 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 " === vim-instant-markdown
 " ===
 let g:instant_markdown_slow = 0
-let g:instant_markdown_autostart = 0
+let g:instant_markdown_autostart = 1
 " let g:instant_markdown_open_to_the_world = 1
 " let g:instant_markdown_allow_unsafe_content = 1
 " let g:instant_markdown_allow_external_content = 0
 " let g:instant_markdown_mathjax = 1
 let g:instant_markdown_autoscroll = 1
-
 
 " ===
 " === vim-table-mode
@@ -753,8 +722,8 @@ let g:table_mode_cell_text_object_i_map = 'k<Bar>'
 set rtp+=/usr/local/opt/fzf
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 set rtp+=/home/david/.linuxbrew/opt/fzf
-nnoremap <c-p> :Leaderf file<CR>
 " noremap <silent> <C-p> :Files<CR>
+noremap <silent> <C-p> :Leaderf file<CR>
 noremap <silent> <C-f> :Rg<CR>
 noremap <silent> <C-h> :History<CR>
 "noremap <C-t> :BTags<CR>
@@ -766,21 +735,21 @@ let g:fzf_preview_window = 'right:60%'
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
 function! s:list_buffers()
-  redir => list
-  silent ls
-  redir END
-  return split(list, "\n")
+	redir => list
+	silent ls
+	redir END
+	return split(list, "\n")
 endfunction
 
 function! s:delete_buffers(lines)
-  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+	execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
 endfunction
 
 command! BD call fzf#run(fzf#wrap({
-  \ 'source': s:list_buffers(),
-  \ 'sink*': { lines -> s:delete_buffers(lines) },
-  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-\ }))
+			\ 'source': s:list_buffers(),
+			\ 'sink*': { lines -> s:delete_buffers(lines) },
+			\ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+			\ }))
 
 noremap <c-d> :BD<CR>
 
@@ -796,17 +765,17 @@ let g:Lf_PreviewCode = 1
 let g:Lf_ShowHidden = 1
 let g:Lf_ShowDevIcons = 1
 let g:Lf_CommandMap = {
-\   '<C-k>': ['<C-u>'],
-\   '<C-j>': ['<C-e>'],
-\   '<C-]>': ['<C-v>'],
-\   '<C-p>': ['<C-n>'],
-\}
+			\   '<C-k>': ['<C-u>'],
+			\   '<C-j>': ['<C-e>'],
+			\   '<C-]>': ['<C-v>'],
+			\   '<C-p>': ['<C-n>'],
+			\}
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 let g:Lf_WildIgnore = {
-        \ 'dir': ['.git', 'vendor', 'node_modules'],
-        \ 'file': ['__vim_project_root']
-        \}
+			\ 'dir': ['.git', 'vendor', 'node_modules'],
+			\ 'file': ['__vim_project_root']
+			\}
 let g:Lf_UseMemoryCache = 0
 let g:Lf_UseCache = 0
 
@@ -845,7 +814,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " ===
 " === Undotree
 " ===
-noremap L :UndotreeToggle<CR>
+noremap M :UndotreeToggle<CR>
 let g:undotree_DiffAutoOpen = 1
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_ShortIndicators = 1
@@ -853,10 +822,10 @@ let g:undotree_WindowLayout = 2
 let g:undotree_DiffpanelHeight = 8
 let g:undotree_SplitWidth = 24
 function g:Undotree_CustomMap()
-	nmap <buffer> u <plug>UndotreeNextState
-	nmap <buffer> e <plug>UndotreePreviousState
-	nmap <buffer> U 5<plug>UndotreeNextState
-	nmap <buffer> E 5<plug>UndotreePreviousState
+	nmap <buffer> i <plug>UndotreeNextState
+	nmap <buffer> k <plug>UndotreePreviousState
+	nmap <buffer> I 5<plug>UndotreeNextState
+	nmap <buffer> K 5<plug>UndotreePreviousState
 endfunc
 
 
@@ -881,7 +850,7 @@ endfunc
 "let g:VM_default_mappings = 0
 let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
 let g:VM_maps                       = {}
-let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
+let g:VM_custom_motions             = {'j': 'h', 'u': 'k', 'k': 'j', 'N': '0', 'L': '$'}
 let g:VM_maps['i']                  = 'k'
 let g:VM_maps['I']                  = 'K'
 let g:VM_maps['Find Under']         = '<C-k>'
@@ -899,8 +868,8 @@ let g:VM_maps["Redo"]               = '<C-r>'
 " ===
 noremap <LEADER>f :F  **/*<left><left><left><left><left>
 let g:far#mapping = {
-		\ "replace_undo" : ["l"],
-		\ }
+			\ "replace_undo" : ["l"],
+			\ }
 
 
 " ===
@@ -928,18 +897,18 @@ let g:bullets_enabled_file_types = [
 " ===
 " === Vista.vim
 " ===
-noremap <LEADER>v :Vista!!<CR>
+noremap <LEADER>v :Vista coc<CR>
 noremap <c-t> :silent! Vista finder coc<CR>
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'coc'
+let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer#enable_icon = 1
 let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
+			\   "function": "\uf794",
+			\   "variable": "\uf71b",
+			\  }
 " function! NearestMethodOrFunction() abort
-" 	return get(b:, 'vista_nearest_method_or_function', '')
+"		return get(b:, 'vista_nearest_method_or_function', '')
 " endfunction
 " set statusline+=%{NearestMethodOrFunction()}
 " autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
@@ -1042,19 +1011,10 @@ let g:go_doc_keywordprg_enabled = 0
 " ===
 " === AutoFormat
 " ===
-augroup autoformat_settings
-	" autocmd FileType bzl AutoFormatBuffer buildifier
-	" autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
-	" autocmd FileType dart AutoFormatBuffer dartfmt
-	" autocmd FileType go AutoFormatBuffer gofmt
-	" autocmd FileType gn AutoFormatBuffer gn
-	" autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-	autocmd FileType java AutoFormatBuffer google-java-format
-	" autocmd FileType python AutoFormatBuffer yapf
-	" Alternative: autocmd FileType python AutoFormatBuffer autopep8
-	" autocmd FileType rust AutoFormatBuffer rustfmt
-	" autocmd FileType vue AutoFormatBuffer prettier
-augroup END
+nnoremap \f :Autoformat<CR>
+let g:formatdef_custom_js = '"js-beautify -t"'
+let g:formatters_javascript = ['custom_js']
+au BufWrite *.js :Autoformat
 
 
 " ===
@@ -1194,7 +1154,7 @@ noremap \p :echo expand('%:p')<CR>
 "set sessionoptions-=options
 "noremap sl :OpenSession<CR>
 "noremap sS :SaveSession<CR>
-"noremap ss :SaveSession 
+"noremap ss :SaveSession
 "noremap sc :SaveSession<CR>:CloseSession<CR>:q<CR>
 "noremap so :OpenSession default<CR>
 "noremap sD :DeleteSession<CR>
@@ -1251,7 +1211,6 @@ let g:vmt_cycle_list_item_markers = 1
 let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 
-
 " ===
 " === rnvimr
 " ===
@@ -1262,18 +1221,18 @@ let g:rnvimr_draw_border = 0
 highlight link RnvimrNormal CursorLine
 nnoremap <silent> R :RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
 let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
+			\ '<C-t>': 'NvimEdit tabedit',
+			\ '<C-x>': 'NvimEdit split',
+			\ '<C-v>': 'NvimEdit vsplit',
+			\ 'gw': 'JumpNvimCwd',
+			\ 'yw': 'EmitRangerCwd'
+			\ }
 let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': &columns,
-            \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
-            \ 'style': 'minimal' }
+			\ 'width': &columns,
+			\ 'height': &lines,
+			\ 'col': 0,
+			\ 'row': 0,
+			\ 'style': 'minimal' }
 let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
 
 
@@ -1340,7 +1299,7 @@ noremap <c-y> :NR<CR>
 " ===
 " === any-jump
 " ===
-nnoremap j :AnyJump<CR>
+nnoremap aj :AnyJump<CR>
 let g:any_jump_window_width_ratio  = 0.8
 let g:any_jump_window_height_ratio = 0.9
 
@@ -1350,27 +1309,11 @@ let g:any_jump_window_height_ratio = 0.9
 " ===
 let g:typescript_ignore_browserwords = 1
 
-
 " ===
 " === Agit
 " ===
 nnoremap <LEADER>gl :Agit<CR>
 let g:agit_no_default_mappings = 1
-
-
-" ===
-" === nvim-treesitter
-" ===
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"typescript", "dart", "java"},     -- one of "all", "language", or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-  },
-}
-EOF
-
 
 " ===================== End of Plugin Settings =====================
 
